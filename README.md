@@ -33,3 +33,8 @@ Prima di passare alla scrittura, premere i tasti <kbd>Ctrl</kbd>+<kbd>Shift</kbd
 > sudo raspi-config
 > ```
 
+Infine, cliccare su <kbd>Write</kbd>. Attendere che Imager abbia terminato la scrittura e la verifica.
+
+Inserire la scheda SD nel Raspberry e avviarlo.
+
+
