@@ -102,6 +102,7 @@ Seguire questa [guida](https://github.com/ginocic/Geekworm-X735-V2.5-Software)
 Seguire questa [guida](https://github.com/ginocic/RaspberryPi-Display-OLED)
 
 # Installare Kodi
+Riferimento: [PiMyLifeUp](https://pimylifeup.com/raspberry-pi-kodi/)
 Per sicurezza, aggiornare il sistema
 ```bash
 aggiorna
@@ -141,13 +142,40 @@ kodi-standalone &
 ```
 A questo punto, si dovrebbe aver accesso all'interfaccia di Kodi
 
+# Avvio automatico di Kodi all'avvio del Raspberry
+Creare il file di servizio
+```bash
+sudo nano /lib/systemd/system/kodi.service
+```
+Aggiungere nel file appena creato le seguenti linee
+```
+[Unit]
+Description = Kodi Media Center
+After = remote-fs.target network-online.target
+Wants = network-online.target
+
+[Service]
+User = pi
+Group = pi
+Type = simple
+ExecStart = /usr/bin/kodi-standalone
+Restart = on-abort
+RestartSec = 5
+
+[Install]
+WantedBy = multi-user.target
+```
+Salvare e uscire dall'editor con <kbd>CTRL + x</kbd>, <kbd>y</kbd>, <kbd>ENTER</kbd>.
+Abilitare e avviare il servizio
+```bash
+sudo systemctl enable kodi
+sudo systemctl start kodi
+```
+# Configurare Kodi per accedere ad
 
 
-
-
-
-
-
+# ToDo-List
+Abilitare il telecomando (per esempio [leggere qui](https://pimylifeup.com/kodi-remote-controls/))
 
 
 
