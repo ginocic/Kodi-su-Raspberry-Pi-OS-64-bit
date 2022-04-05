@@ -84,14 +84,17 @@ dtoverlay=disable-bt
 
 # Spostare il file system di root del Raspberry Pi su SSD e abilitare il TRIM
 > **Nota**: Questa sezione è opzionale. Io la consiglio per migliorare le prestazioni del sistema e allungare la vita della Micro SD.
+
 Seguire questa [guida](https://gist.github.com/ginocic/3322d84c035f09ca956418c88c8f9b43)
 
 # Installare il software per il Geekworm X735 V2.5
 > **Nota**: Questa sezione è opzionale e non necessaria.
+
 Seguire questa [guida](https://github.com/ginocic/Geekworm-X735-V2.5-Software)
 
 # Connettere e programmare un display OLED
 > **Nota**: Questa sezione è opzionale e non necessaria.
+
 Seguire questa [guida](https://github.com/ginocic/RaspberryPi-Display-OLED)
 
 
