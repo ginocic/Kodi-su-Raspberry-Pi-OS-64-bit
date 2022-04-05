@@ -102,7 +102,10 @@ Seguire questa [guida](https://github.com/ginocic/Geekworm-X735-V2.5-Software)
 Seguire questa [guida](https://github.com/ginocic/RaspberryPi-Display-OLED)
 
 # Installare Kodi
-Riferimento: [PiMyLifeUp](https://pimylifeup.com/raspberry-pi-kodi/)
+Riferimenti:
+1. [Wiki Kodi](https://kodi.wiki/view/HOW-TO:Install_Kodi_on_Raspberry_Pi)
+2. [PiMyLifeUp](https://pimylifeup.com/raspberry-pi-kodi/)
+
 Per sicurezza, aggiornare il sistema
 ```bash
 aggiorna
@@ -171,18 +174,93 @@ Abilitare e avviare il servizio
 sudo systemctl enable kodi
 sudo systemctl start kodi
 ```
-# Configurare Kodi per accedere ad
+# Addons da installare
+### Add-on:Extras
+Questo addon fornisce un modo semplice per vedere gli extra (corti, scene cancellate, bloopers, ecc) di film e serie TV. Gli Extra sono accessibili via il menu di contesto nella libreria Video. Di default, l'addon cercherà gli "extra" nella sottocartella ```Extras```.
 
+**Installazione**
+
+Dalla Home di Kodi, seguire questi menù:
+  - Settings
+  - Add-ons
+  - Install from repository
+  - Context items
+  - Extras
+  - Install
+
+**Posizione della cartella Extras**
+
+Tipicamente, l'addon cerca una cartella chiamata ```Extras```. Il nome può essere cambiato nelle impostazioni dell'addon.
+
+Per Films
+```
+...\Lucy (2014)\
+...\Lucy (2014)\Extras\
+```
+
+Per le serie TV
+```
+...\Childhood's End
+...\Childhood's End\Childhood's End S01E01
+...\Childhood's End\Childhood's End S01E02
+...\Childhood's End\Childhood's End S01E03
+...\Childhood's End\Extras\
+```
+
+**Prevenire che gli Extra vengano aggiunti alla libreria**
+
+Per prevenire che gli Extra vengano aggiunti alla libreria, creare il file ```Advancedsettings.xml``` e copiare il codice seguente
+```xml
+<advancedsettings version="1.0">
+ 	<video>
+	 	 <excludefromscan>
+		  	 <regexp>[-\._ ](extrafanart|sample|trailer|extrathumbs)[-\._ ]</regexp>
+		  </excludefromscan>
+		  <excludefromlisting>
+			   <regexp>[-._ \\/](extrafanart|sample|trailer|extrathumbs)[-._ \\/]</regexp>
+		  </excludefromlisting>
+		  <!-- Extras: Section Start -->
+		  <excludefromscan action="append">
+			   <regexp>/extras/</regexp>
+			   <regexp>[\\/]extras[\\/]</regexp>
+		  </excludefromscan>
+		  <excludetvshowsfromscan action="append">
+			   <regexp>/extras/</regexp>
+			   <regexp>[\\/]extras[\\/]</regexp>
+		  </excludetvshowsfromscan>
+		  <!-- Extras: Section End -->
+ 	</video>
+</advancedsettings>
+```
+### Add-on:Backup
+Questo addon fa un backup della libreria, delle playlists, degli addons installati e altri dettagli di configurazione su qualsiasi sorgente accessibile e scrivibile da Kodi (local, percorso di rete o cloud). I backup possono essere fatti manualmente o pianificati in automatico.
+
+**Installazione**
+
+Dalla Home di Kodi, seguire questi menù:
+  - Settings
+  - Add-ons
+  - Install from repository
+  - Program Add-ons
+  - Backup
+  - Install
+
+**Utilizzo**
+  - Home
+  - Programs
+  - XBMC Backup
+  - Backup o Restore
+
+# Configurare una libreria condivisa per instanze multiple di Kodi
+Se si hanno moltleplici dispositivi Kodi nella rete locale, si può sincronizzarli condividendo il database della libreria via protocollo MySQL.
+
+Questo permette di:
+- condividere lo stato di visione dei media su tutti i dispositivi.
+- terminare la visione di un media in una stanza e riprendere la visione in un'altra stanza.
+- una sola libreria da gestire per tutti i dispositivi.
+
+Fare riferimento alle pagine del [Wiki di Kodi](https://kodi.wiki/view/MySQL) per una corretta installazione del software necessario, la configurazione e la gestione.
+> **Nota:** Come segnalato anche nella suddetta pagina, questa procedura è da considerarsi ***avazanta e sperimentale***
 
 # ToDo-List
 Abilitare il telecomando (per esempio [leggere qui](https://pimylifeup.com/kodi-remote-controls/))
-
-
-
-
-
-
-
-
-```bash
-```
