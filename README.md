@@ -81,6 +81,10 @@ e aggiungere queste 2 linee sotto
 dtoverlay=disable-wifi
 dtoverlay=disable-bt
 ```
+# Impostare un indirizzo IP statico
+> **Nota**: Questa sezione è opzionale ma io la consiglio.
+
+Seguire questa [guida](https://github.com/ginocic/Impostare-indirizzo-IP-statico-al-raspberry)
 
 # Spostare il file system di root del Raspberry Pi su SSD e abilitare il TRIM
 > **Nota**: Questa sezione è opzionale. Io la consiglio per migliorare le prestazioni del sistema e allungare la vita della Micro SD.
