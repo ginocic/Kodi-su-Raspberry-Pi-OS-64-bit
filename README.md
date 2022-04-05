@@ -63,7 +63,7 @@ wget https://raw.githubusercontent.com/ginocic/bash_aliases/main/.bash_aliases
 
 Testare in una sessione ssh duplicata e se tutto funziona correttamente
 ```bash
-aggiorna && ripulisci
+aggiorna
 riavvia
 ```
 
@@ -82,26 +82,79 @@ dtoverlay=disable-wifi
 dtoverlay=disable-bt
 ```
 # Impostare un indirizzo IP statico
-> **Nota**: Questa sezione è opzionale ma io la consiglio.
+>**Nota**: Questa sezione è opzionale ma io la consiglio.
 
 Seguire questa [guida](https://github.com/ginocic/Impostare-indirizzo-IP-statico-al-raspberry)
 
 # Spostare il file system di root del Raspberry Pi su SSD e abilitare il TRIM
-> **Nota**: Questa sezione è opzionale. Io la consiglio per migliorare le prestazioni del sistema e allungare la vita della Micro SD.
+>**Nota**: Questa sezione è opzionale. Io la consiglio per migliorare le prestazioni del sistema e allungare la vita della Micro SD.
 
 Seguire questa [guida](https://gist.github.com/ginocic/3322d84c035f09ca956418c88c8f9b43)
 
 # Installare il software per il Geekworm X735 V2.5
-> **Nota**: Questa sezione è opzionale e non necessaria.
+>**Nota**: Questa sezione è opzionale e non necessaria.
 
 Seguire questa [guida](https://github.com/ginocic/Geekworm-X735-V2.5-Software)
 
 # Connettere e programmare un display OLED
-> **Nota**: Questa sezione è opzionale e non necessaria.
+>**Nota**: Questa sezione è opzionale e non necessaria.
 
 Seguire questa [guida](https://github.com/ginocic/RaspberryPi-Display-OLED)
 
+# Installare Kodi
+Per sicurezza, aggiornare il sistema
+```bash
+aggiorna
+```
+Dopo l'aggiornamento, con il comando seguente, installare Kodi e uno degli addon che non sono disponibili nel repository ufficiale di Kodi.
+```bash
+sudo apt install -y kodi kodi-inputstream-adaptive
+```
+### Configurare l'accelerazione hardware sul Raspberry
+Aprire il file di configurazione d'avvio
+```bash
+sudo nano /boot/config.txt
+```
+Premere la combinazione di tasti <kbd>Ctrl</kbd>+<kbd>w</kbd> per cercare la stringa ```[pi4]``` e aggiungere, subito sotto l'intestazione trovata, la riga seguente per far caricare all'avvio il driver per l'accellerazione hardware HEVC
+```
+dtoverlay=rpivid-v4l2
+```
+Se si ha intenzione di usare anche file 4K HEVC, bisogna aumentare l'allocazione CMA.
+
+Premere la combinazione di tasti <kbd>Ctrl</kbd>+<kbd>w</kbd> per cercare la stringa ```dtoverlay=vc4-kms-v3d``` e sostituirla con la linea seguente
+```
+dtoverlay=vc4-kms-v3d,cma-512
+```
+Salvare e uscire dall'editor con <kbd>CTRL + x</kbd>, <kbd>y</kbd>, <kbd>ENTER</kbd> e riavviare il sistema
+```bash
+riavvia
+```
+
+### Lanciare Kodi da terminale
+Con il raspberry collegato ad un monitor o alla TV, lanciare la versione standalone di Kodi
+```bash
+kodi-standalone
+```
+Oppure, con questo comando, lanciare Kodi in background. Questo ci permetterà di operare sul sistema via la console
+```bash
+kodi-standalone &
+```
+A questo punto, si dovrebbe aver accesso all'interfaccia di Kodi
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+```bash
+```
